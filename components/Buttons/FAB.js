@@ -1,6 +1,7 @@
 import React from "react";
 import {
   View,
+  Text,
   TouchableOpacity,
   TouchableNativeFeedback,
   StyleSheet,
@@ -9,7 +10,9 @@ import {
 export default function FAB() {
   return (
     <View>
-      <TouchableNativeFeedback style={styles.FAB}></TouchableNativeFeedback>
+      <TouchableNativeFeedback style={styles.FAB}>
+        <Text>New Reminder</Text>
+      </TouchableNativeFeedback>
     </View>
   );
 }
