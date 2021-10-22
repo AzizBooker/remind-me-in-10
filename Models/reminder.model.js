@@ -2,7 +2,8 @@
 export default class Reminder{
 
     
-    constructor(title,description,duration,priority){
+    constructor(uuid,title,description,duration,priority){
+    this.uuid=uuid
     this.title=title
     this.description=description
     this.duration=duration

@@ -10,7 +10,7 @@ import {
 export default function FAB() {
   return (
     <View>
-      <TouchableNativeFeedback style={styles.FAB}>
+      <TouchableNativeFeedback onPress={()=>{console.log('tap')}} style={styles.FAB}>
         <Text>New Reminder</Text>
       </TouchableNativeFeedback>
     </View>
