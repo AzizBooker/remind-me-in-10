@@ -36,8 +36,7 @@ export default function HomeScreen() {
 
     return (
         <View style={styles.container}>
-            <StatusBar  hidden={true}/>
-            <Text style={styles.text}>Hello</Text>
+        <StatusBar  hidden={true}/>
           <FlatList data={DATA} renderItem={renderItem} keyExtractor={item=>item.uuid} />
            <FAB />
         </View>
@@ -47,8 +46,7 @@ export default function HomeScreen() {
 const styles=StyleSheet.create({
     container:{
         flex:1,
-        justifyContent:'center',
-        alignItems:'center',
+        justifyContent:"flex-start",
         backgroundColor:Colors.background,
         padding:10
     },
