@@ -4,36 +4,12 @@ import Colors from '../utils/Colors'
 import FAB from '../components/Buttons/FAB'
 import priorityEnum from '../Enums/priority.enum'
 import TimerItem from '../components/TimerItem'
-
+import Reminder from '../Models/reminder.model'
 const DATA=[
-    {
-        uuid:"12312",
-        title:"Clean Bathroom",
-        description:"I need to clean this bathroom",
-        duration:"10:00",
-        priority:priorityEnum.p1
-    },
-    {
-        uuid:"asd12",
-        title:"Add Sugar",
-        description:"No Sugar in Bathroom",
-        duration:"15:00",
-        priority:priorityEnum.p2
-    },
-    {
-        uuid:"ac123",
-        title:"Record Star Wars",
-        description:"I need to clean this bathroom",
-        duration:"25:00",
-        priority:priorityEnum.p3
-    },
-    {
-        uuid:"ac125",
-        title:"Open Dryer",
-        description:"I need to clean this bathroom",
-        duration:"11:00",
-        priority:priorityEnum.p3
-    },
+    new Reminder('12313',"Reminder Test","Description","10:00",priorityEnum.p1),
+    new Reminder('12312',"Reminder Test 2","Description2","11:00",priorityEnum.p1),
+    new Reminder('12310','Priority Test 3','Test priority')
+    
 ]
 
 export default function HomeScreen() {

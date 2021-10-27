@@ -10,7 +10,9 @@ import {
 } from "react-native";
 import Colors from "../utils/Colors";
 export default function TimerItem({ item }) {
+  console.log(item)
   return (
+
     <TouchableWithoutFeedback
       onPress={() => {
         console.log("Click");

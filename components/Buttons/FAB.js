@@ -10,17 +10,27 @@ import Colors from "../../utils/Colors";
 
 export default function FAB() {
   return (
-    <View>
-      <TouchableNativeFeedback onPress={()=>{console.log('tap')}} style={styles.FAB}>
-        <Text>New Reminder</Text>
+    <View style={styles.container}>
+      <TouchableNativeFeedback onPress={()=>{console.log('tap')}} style={styles.TouchableWrapper}>
+        <View >
+        <Text style={styles.text}>New Reminder</Text>
+        </View>
       </TouchableNativeFeedback>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  FAB: {
-    borderRadius: 30,
-    backgroundColor:Colors.highlightText
+  container: {
+    justifyContent:'center',
+    alignItems:'center',
+    backgroundColor:Colors.highlightText,
+    borderRadius: 90,
+    width:60,
+    height:60,
+    
   },
+  text:{
+
+  }
 });
