@@ -6,6 +6,7 @@ import {
   TouchableNativeFeedback,
   StyleSheet,
 } from "react-native";
+import Colors from "../../utils/Colors";
 
 export default function FAB() {
   return (
@@ -20,5 +21,6 @@ export default function FAB() {
 const styles = StyleSheet.create({
   FAB: {
     borderRadius: 30,
+    backgroundColor:Colors.highlightText
   },
 });

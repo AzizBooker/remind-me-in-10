@@ -27,6 +27,13 @@ const DATA=[
         duration:"25:00",
         priority:priorityEnum.p3
     },
+    {
+        uuid:"ac125",
+        title:"Open Dryer",
+        description:"I need to clean this bathroom",
+        duration:"11:00",
+        priority:priorityEnum.p3
+    },
 ]
 
 export default function HomeScreen() {

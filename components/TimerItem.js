@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
-    paddingVertical: 10,
+    paddingVertical: 14,
   },
   title: {
     fontSize: 16,
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   },
   duration: {
     fontSize: 16,
-    color: Colors.highlightText,
+    color: Colors.highlightTextUrgent,
     fontWeight: "bold",
   },
 });
