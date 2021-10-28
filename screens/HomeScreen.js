@@ -5,14 +5,13 @@ import FAB from '../components/Buttons/FAB'
 import priorityEnum from '../Enums/priority.enum'
 import TimerItem from '../components/TimerItem'
 import Reminder from '../Models/reminder.model'
-const DATA=[
-    new Reminder('12313',"Reminder Test","Description","10:00",priorityEnum.p1),
-    new Reminder('12312',"Reminder Test 2","Description2","11:00",priorityEnum.p1),
-    new Reminder('12310','Priority Test 3','Test priority')
-    
-]
+import { useSelector } from 'react-redux'
+
 
 export default function HomeScreen() {
+    console.log(useSelector((state)=>state.ReminderSlice.reminders))
+    const DATA=useSelector(state=>state.ReminderSlice.reminders)
+
     const renderItem=({item})=>(
        <TimerItem item={item} />
     )
@@ -20,7 +19,7 @@ export default function HomeScreen() {
     return (
         <View style={styles.container}>
         <StatusBar  hidden={true}/>
-          <FlatList data={DATA} renderItem={renderItem} keyExtractor={item=>item.uuid} />
+        <FlatList data={DATA} renderItem={renderItem} keyExtractor={item=>item.uuid} />
            <FAB />
         </View>
     )

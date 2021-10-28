@@ -20,7 +20,7 @@ export default function TimerItem({ item }) {
     >
       <View style={styles.container}>
         <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.duration}>{item.duration}</Text>
+        <Text style={{...styles.duration,...styles.highlightText}}>{item.durationMin}:{item.durationSec}</Text>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -41,7 +41,12 @@ const styles = StyleSheet.create({
   },
   duration: {
     fontSize: 16,
-    color: Colors.highlightTextUrgent,
     fontWeight: "bold",
   },
+    highlightText:{
+      color:Colors.highlightText
+    },
+    highlightTextUrgent:{
+      color:Colors.highlightTextUrgent
+    }
 });

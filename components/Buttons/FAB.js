@@ -22,6 +22,7 @@ export default function FAB() {
 
 const styles = StyleSheet.create({
   container: {
+    padding:10,
     justifyContent:'center',
     alignItems:'center',
     backgroundColor:Colors.highlightText,

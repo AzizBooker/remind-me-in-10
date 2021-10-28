@@ -1,13 +1,15 @@
 import priorityEnum from "../Enums/priority.enum"
-
+import { v4 as uuidGen } from "uuid"
 export default class Reminder{
 
     
-    constructor(uuid,title,description,duration,priority=priorityEnum.p3){
-    this.uuid=uuid
+    constructor(title,description,durationMin,durationSec,durationHour="",priority=priorityEnum.p3){
+    this.uuid=uuidGen()
     this.title=title
     this.description=description
-    this.duration=duration
+    this.durationHour=durationHour
+    this.durationMin=durationMin
+    this.durationSec=durationSec
     this.priority=priority
 
     }
@@ -36,5 +38,36 @@ export default class Reminder{
     }
     setPriority(newPriority){
         this.priority=newPriority
+    }
+    //None=>Natural ;stub
+    //Return durationHour ;purpose
+    getDurationHour(){
+        return this.durationHour
+    }
+    //None=>Natural ;stub
+    // return durationMin ;purpose
+    getDurationMin(){
+        return this.durationMin
+    }
+    //None=>Natural ;stub
+    // 'return durationSec' ;purpose
+    getDurationSec(){
+        return this.durationSec
+    }
+
+    //Natural=>None ;stub
+    //"Set durationHour" ;purpose
+    setDurationHour(newDuration){
+        this.durationHour=newDuration
+    }
+    //Natural=>None ;stub
+    //"Set durationMin" ;purpose
+    setDurationMin(newDuration){
+        this.durationMin=newDuration
+    }
+    //Natural=>None ;stub
+    //"Set durationSec" ;purpose
+    setDurationSec(newDuration){
+        this.durationSec=newDuration
     }
 }

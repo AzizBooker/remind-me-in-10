@@ -9,11 +9,11 @@ import rootNavigator from "./Navigation/rootNavigator";
 import RootNavigator from "./Navigation/rootNavigator";
 export default function App() {
   return (
-
-     <NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
         <RootNavigator />
-     </NavigationContainer>
-
+      </NavigationContainer>
+    </Provider>
   );
 }
 
