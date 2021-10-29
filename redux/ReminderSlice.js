@@ -3,7 +3,8 @@ import Reminder from "../Models/reminder.model";
 
 const initialState={
     reminders:[
-        new Reminder('Redux Test','Clean Garage',12,10)
+        new Reminder('Redux Test','Clean Garage',12,10),
+        new Reminder('Cool Remidner',"Garage needs to be cleaned",5,10)
     ]
 }
 

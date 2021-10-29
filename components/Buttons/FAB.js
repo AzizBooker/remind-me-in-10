@@ -8,10 +8,11 @@ import {
 } from "react-native";
 import Colors from "../../utils/Colors";
 
-export default function FAB() {
+export default function FAB(props) {
+  console.log(props)
   return (
     <View style={styles.container}>
-      <TouchableNativeFeedback onPress={()=>{console.log('tap')}} style={styles.TouchableWrapper}>
+      <TouchableNativeFeedback onPress={props.onPress} style={styles.TouchableWrapper}>
         <View >
         <Text style={styles.text}>New Reminder</Text>
         </View>

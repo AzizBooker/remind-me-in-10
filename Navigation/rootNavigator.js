@@ -1,5 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
+import NewReminderModal from "../screens/NewReminderModal";
 import React from "react";
 import Colors from "../utils/Colors";
 
@@ -19,6 +20,7 @@ export default function RootNavigator() {
         }
         }}
       />
+      <Stack.Screen name="New Reminder Modal" component={NewReminderModal} options={{presentation:'modal',headerShown:false}} />
     </Stack.Navigator>
   );
 }
