@@ -4,22 +4,22 @@ import { useState } from 'react'
 import { TextInput } from 'react-native-paper'
 import Colors from '../utils/Colors'
 import NumberPlease from 'react-native-number-please'
+import SetTimeWidget from '../components/SetTimeWidget'
 export default function NewReminderModal() {
-    const [duration,setDuration]=useState(initialDigits)
-    const initialDigits=[
-        {id:"min",value:0},
-        {sec:"min",value:0}
 
-    ]
-    const digits=[
-        {id:"minutes",label:"",min:0,max:59},
-        {id:"seconds",label:"",min:0,max:59}
-    ]
+   
+    //TODO Style Text Input 
+    //TODO Add Back Button to Header to navigate to home Screen
     return (
         <View style={styles.container}>
-            <NumberPlease values={duration} digits={digits}/>
-            <TextInput  underlineColor={Colors.secondary} mode="flat" label="title" style={styles.input}/>
-            <TextInput mode="flat" />
+           <SetTimeWidget />
+            <TextInput placeholder="title" backgroundColor={Colors.background2}  underlineColor={Colors.secondary} 
+             mode="underline" style={styles.input} 
+             theme={{colors:{text:Colors.primary,placeholder:Colors.primary2}}}
+             />
+            <TextInput placeholder="description" multiline={true} backgroundColor={Colors.background2} 
+            underlineColor={Colors.secondary} mode="underline"  style={[styles.input,styles.multilineInput]} numberOfLines={20}
+            theme={{colors:{text:Colors.primary,placeholder:Colors.primary2}}} />
         </View>
     )
 }
@@ -30,8 +30,12 @@ const styles=StyleSheet.create({
         backgroundColor:Colors.background
     },
     input:{
+        color:Colors.primary,
         margin:16,
         borderColor:Colors.secondary,
         borderRadius:8
+    },
+    multilineInput:{
+        paddingTop:0
     }
 })
