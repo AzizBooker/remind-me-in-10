@@ -3,13 +3,11 @@ import { v4 as uuidGen } from "uuid"
 export default class Reminder{
 
     
-    constructor(title,description,durationMin,durationSec,durationHour="",priority=priorityEnum.p3){
+    constructor(title,description,duration,priority=priorityEnum.p3){
     this.uuid=uuidGen()
     this.title=title
     this.description=description
-    this.durationHour=durationHour
-    this.durationMin=durationMin
-    this.durationSec=durationSec
+    this.duration=duration
     this.priority=priority
 
     }
@@ -69,5 +67,9 @@ export default class Reminder{
     //"Set durationSec" ;purpose
     setDurationSec(newDuration){
         this.durationSec=newDuration
+    }
+
+    getFormattedTime(){
+        return this.duration%60
     }
 }

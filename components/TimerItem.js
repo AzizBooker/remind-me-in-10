@@ -20,7 +20,7 @@ export default function TimerItem({ item }) {
     >
       <View style={styles.container}>
         <Text style={styles.title}>{item.title}</Text>
-        <Text style={{...styles.duration,...styles.highlightText}}>{item.durationMin}:{item.durationSec}</Text>
+        <Text style={{...styles.duration,...styles.highlightText}}>{item.duration}</Text>
       </View>
     </TouchableWithoutFeedback>
   );
