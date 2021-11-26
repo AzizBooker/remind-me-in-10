@@ -3,8 +3,8 @@ import { v4 as uuidGen } from "uuid"
 export default class Reminder{
 
     
-    constructor(title,description,duration,priority=priorityEnum.p3){
-    this.uuid=uuidGen()
+    constructor(title,description,duration,uuid=uuidGen(),priority=priorityEnum.p3){
+    this.uuid=uuid
     this.title=title
     this.description=description
     this.duration=duration

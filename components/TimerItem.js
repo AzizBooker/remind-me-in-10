@@ -10,10 +10,10 @@ import {
 } from "react-native";
 import Colors from "../utils/Colors";
 export default function TimerItem({ item }) {
-  console.log(item)
+ // console.log(item)
   return (
-
     <TouchableWithoutFeedback
+      //TODO 2 Set Up so on click modal opens and is passed refrence to item
       onPress={() => {
         console.log("Click");
       }}

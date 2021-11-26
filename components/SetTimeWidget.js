@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { TextInput } from "react-native-paper";
 import Colors from "../utils/Colors";
 import SetTimeModal from "./SetTimeModal";
-//TODO On Click open popup
+
 
 export default function SetTimeWidget() {
   return (

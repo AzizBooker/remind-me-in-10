@@ -3,20 +3,27 @@ import Reminder from "../Models/reminder.model";
 
 const initialState={
     reminders:[
-        new Reminder('Redux Test','Clean Garage',600),
-        new Reminder('Cool Remidner',"Garage needs to be cleaned",120),
-        new Reminder('Woah god job',"Doing good",60)
+        new Reminder('This is a test reminder','testing if this function works',600,'abc'),
+        new Reminder('second test reminder','to test if function works',200,'cba')
     ]
+       
 }
 
 export const ReminderSlice=createSlice({
     name:"reminder",
     initialState:initialState,
     reducers:{
-        AddReminder:(state,reminder)=>{
-            state.reminders.push(payload.payload)
+        AddReminder:(state,action)=>{
+            state.reminders.push(action.payload)
+        },
+        // TODO 1 Create FindReminderByUUID Function
+        FindReminderByUUID:(state,action)=>{
+             return state.reminders.find(reminder=>reminder.uuid==action.payload)
         }
     }
 })
 
-export default ReminderSlice.reducer
+export const {AddReminder,FindReminderByUUID}=ReminderSlice.actions
+
+export default ReminderSlice.reducer;
+

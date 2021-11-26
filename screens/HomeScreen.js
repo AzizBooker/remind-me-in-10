@@ -6,12 +6,14 @@ import { FAB } from 'react-native-paper'
 import priorityEnum from '../Enums/priority.enum'
 import TimerItem from '../components/TimerItem'
 import Reminder from '../Models/reminder.model'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
+import { FindReminderByUUID } from '../redux/ReminderSlice'
 
 
 export default function HomeScreen({navigation}) {
     const DATA=useSelector(state=>state.ReminderSlice.reminders)
-
+    const dispatch=useDispatch()
+    dispatch(FindReminderByUUID('cba'))
     const renderItem=({item})=>(
        <TimerItem item={item} />
     )
