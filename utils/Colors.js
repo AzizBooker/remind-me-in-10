@@ -6,6 +6,10 @@ export default Colors={
     background3:"#333940",
     background2:"#272C30",
     highlightText:"#f77f00",
-    highlightTextUrgent:"#f77f00"
+    highlightTextUrgent:"#f77f00",
+    priorityHighBackgroundColor:"#FF7570",
+    priorityMedBackgroundColor:"#FFF292",
+    priorityLowBackgroundColor:"#5E9CA0",
 }
 
+//If priorityMed to bright use this #FFF2C3

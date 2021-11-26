@@ -5,7 +5,7 @@ import Colors from "../utils/Colors";
 export default function ReminderInfoModal({ navigation, route, props }) {
   //TODO  3C Create Placeholder Style for duration,title,and description
   //TODO  4C Replace Placeholder information with text from passed item
-  // TODO N/A Set background color based on priorty
+  // TODO 5 Set background color based on priorty
   const title=route.params.title
   const description=route.params.description
   const duration=route.params.duration
@@ -37,7 +37,7 @@ export default function ReminderInfoModal({ navigation, route, props }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.priorityHighBackgroundColor,
     flex: 1,
     padding: 30,
   },
