@@ -13,9 +13,9 @@ import { FindReminderByUUID } from '../redux/ReminderSlice'
 export default function HomeScreen({navigation}) {
     const DATA=useSelector(state=>state.ReminderSlice.reminders)
     const dispatch=useDispatch()
-    dispatch(FindReminderByUUID('cba'))
+    
     const renderItem=({item})=>(
-       <TimerItem item={item} />
+       <TimerItem item={item} navigation={navigation} />
     )
 
     return (
