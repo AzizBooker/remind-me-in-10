@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+import priorityEnum from "../Enums/priority.enum";
 import Reminder from "../Models/reminder.model";
 
 const initialState={
     reminders:[
         new Reminder('This is a test reminder','testing if this function works',600,'abc'),
-        new Reminder('second test reminder','to test if function works',200,'cba')
+        new Reminder('second test reminder','to test if function works',200,'cba',priorityEnum.p2),
+        new Reminder('Clean Dishes','This is a priority 1 Task',600,'bads',priorityEnum.p1)
     ]
        
 }

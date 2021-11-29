@@ -7,8 +7,8 @@ import SetTimeWidget from '../components/SetTimeWidget'
 export default function NewReminderModal() {
 
    
-    //TODO Style Text Input 
-    //TODO Add Back Button to Header to navigate to home Screen
+    //TODO 5C Style Text Input 
+    //TODO 6C Add Back Button to Header to navigate to home Screen
     return (
         <View style={styles.container}>
            <SetTimeWidget />

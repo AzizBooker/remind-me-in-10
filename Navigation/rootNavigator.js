@@ -8,7 +8,7 @@ import Colors from "../utils/Colors";
 const Stack = createStackNavigator();
 export default function RootNavigator() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="Home">
       <Stack.Screen
         name="Home"
         component={HomeScreen}
@@ -21,7 +21,13 @@ export default function RootNavigator() {
         }
         }}
       />
-      <Stack.Screen name="New Reminder Modal" component={NewReminderModal} options={{presentation:'modal',headerShown:false}} />
+      <Stack.Screen name="New Reminder Modal"  component={NewReminderModal} options={
+        {presentation:'modal',
+        title:"",
+        headerTintColor:Colors.primary ,
+        headerStyle:{
+        backgroundColor:Colors.background,elevation:0,borderBottomWidth:0
+      }}} />
       <Stack.Screen name="InfoModal" component={ReminderInfoModal} 
       options={{
         presentation:'modal',

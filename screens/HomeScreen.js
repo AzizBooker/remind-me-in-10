@@ -9,6 +9,7 @@ import Reminder from '../Models/reminder.model'
 import { useSelector,useDispatch } from 'react-redux'
 import { FindReminderByUUID } from '../redux/ReminderSlice'
 
+//TODO 3 Set up Working Ads in adviertisments 
 
 export default function HomeScreen({navigation}) {
     const DATA=useSelector(state=>state.ReminderSlice.reminders)

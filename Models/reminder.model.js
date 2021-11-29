@@ -38,38 +38,27 @@ export default class Reminder{
         this.priority=newPriority
     }
     //None=>Natural ;stub
-    //Return durationHour ;purpose
-    getDurationHour(){
-        return this.durationHour
-    }
-    //None=>Natural ;stub
-    // return durationMin ;purpose
-    getDurationMin(){
-        return this.durationMin
-    }
-    //None=>Natural ;stub
-    // 'return durationSec' ;purpose
-    getDurationSec(){
-        return this.durationSec
+    //Return duration in seconds
+    getDuration(){
+        console.log(this.getFormattedTime())
+        return this.duration
     }
 
-    //Natural=>None ;stub
-    //"Set durationHour" ;purpose
-    setDurationHour(newDuration){
-        this.durationHour=newDuration
-    }
-    //Natural=>None ;stub
-    //"Set durationMin" ;purpose
-    setDurationMin(newDuration){
-        this.durationMin=newDuration
-    }
-    //Natural=>None ;stub
-    //"Set durationSec" ;purpose
-    setDurationSec(newDuration){
-        this.durationSec=newDuration
-    }
 
     getFormattedTime(){
-        return this.duration%60
+        var min=0
+        var sec=0
+        sec=this.duration%60
+        min=(this.duration-sec)/60
+        return `${min}:${this.formatSeconds(sec)}`
+        
+    }
+
+    formatSeconds(sec){
+        if(sec==0){
+            return '00';
+        }else if(sec.length==1){
+            return `0${sec}`
+        }else return sec
     }
 }

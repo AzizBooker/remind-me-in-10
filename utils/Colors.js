@@ -8,8 +8,8 @@ export default Colors={
     highlightText:"#f77f00",
     highlightTextUrgent:"#f77f00",
     priorityHighBackgroundColor:"#FF7570",
-    priorityMedBackgroundColor:"#FFF292",
+    priorityMedBackgroundColor:"#FCD268",
     priorityLowBackgroundColor:"#5E9CA0",
 }
 
-//If priorityMed to bright use this #FFF2C3
+//If priorityMed to bright use this 

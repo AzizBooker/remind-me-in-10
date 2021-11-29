@@ -1,53 +1,125 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { Dimensions } from "react-native";
 import { Col, Row, Grid } from "react-native-easy-grid";
+import priorityEnum from "../Enums/priority.enum";
+import PriorityEnum from "../Enums/priority.enum";
 import Colors from "../utils/Colors";
+import {
+  AdMobBanner,
+  PublisherBanner,
+  setTestDeviceIDAsync,
+} from "expo-ads-admob";
+
+const updateHeaderBackgroundColor = () => {};
+
 export default function ReminderInfoModal({ navigation, route, props }) {
-  //TODO  3C Create Placeholder Style for duration,title,and description
-  //TODO  4C Replace Placeholder information with text from passed item
-  // TODO 5 Set background color based on priorty
-  const title=route.params.title
-  const description=route.params.description
-  const duration=route.params.duration
-  const uuid=route.params.uuid
-  const priority=route.params.priority
+  // TODO 1C Set background color based on priority
+  // TODO 3C Change Header Color Based on priority
+  // TODO 2C Set up Space For Ads to Display
+  //TODO 4C Set up Test Ads
+  const title = route.params.title;
+  const description = route.params.description;
+  const duration = route.params.duration;
+  const uuid = route.params.uuid;
+  const priority = route.params.priority;
+
+  useEffect(() => {
+    setTestDeviceIDAsync("ca-app-pub-3940256099942544/6300978111");
+  }, []);
+
+  //Priority=>Style ;stub
+  //Depending on the Priority passed a different styles will be passed ;purpose
+  const ChangeStyleOnPriority = () => {
+    switch (priority) {
+      case priorityEnum.p3:
+        navigation.setOptions({
+          headerStyle: {
+            backgroundColor: Colors.priorityLowBackgroundColor,
+            elevation: 0,
+            borderBottomWidth: 0,
+          },
+        });
+        return { backgroundColor: Colors.priorityLowBackgroundColor };
+        break;
+      case priorityEnum.p2:
+        navigation.setOptions({
+          headerStyle: {
+            backgroundColor: Colors.priorityMedBackgroundColor,
+            elevation: 0,
+            borderBottomWidth: 0,
+          },
+        });
+        return { backgroundColor: Colors.priorityMedBackgroundColor };
+        break;
+      case priorityEnum.p1:
+        navigation.setOptions({
+          headerStyle: {
+            backgroundColor: Colors.priorityHighBackgroundColor,
+            elevation: 0,
+            borderBottomWidth: 0,
+          },
+        });
+        return { backgroundColor: Colors.priorityHighBackgroundColor };
+        break;
+    }
+
+    // return ({backgroundColor:Colors.priorityLowBackgroundColor})
+  };
+
   return (
-    <View style={styles.container}>
-      <Grid>
-        <Row style={styles.rowWrapper} size={5}>
-          <Text numberOfLines={1} style={{ ...styles.text, ...styles.title }}>{title}</Text>
-        </Row>
-        <Row style={styles.rowWrapper} size={60}>
-          <Text style={{ ...styles.text, ...styles.duration }}>{duration}</Text>
-        </Row>
-        <Row style={styles.descriptionRowWrapper} size={35}>
-          <View>
-            <Text style={{ ...styles.text, ...styles.descTitle }}>
-              Description
+    <View style={{ flex: 1 }}>
+      <View style={{ ...styles.modalContainer, ...ChangeStyleOnPriority() }}>
+        <Grid>
+          <Row style={styles.rowWrapper} size={5}>
+            <Text numberOfLines={1} style={{ ...styles.text, ...styles.title }}>
+              {title}
             </Text>
-            <Text style={{ ...styles.text }}>
-              {description}
+          </Row>
+          <Row style={styles.rowWrapper} size={65}>
+            <Text style={{ ...styles.text, ...styles.duration }}>
+              {duration}
             </Text>
-          </View>
-        </Row>
-      </Grid>
+          </Row>
+          <Row style={styles.descriptionRowWrapper} size={30}>
+            <View>
+              <Text style={{ ...styles.text, ...styles.descTitle }}>
+                Description
+              </Text>
+              <Text style={{ ...styles.text }}>{description}</Text>
+            </View>
+          </Row>
+        </Grid>
+      </View>
+      <View>
+        <PublisherBanner
+          bannerSize="fullBanner"
+          adUnitID="ca-app-pub-3940256099942544/6300978111" // Test ID, Replace with your-admob-unit-id
+          onDidFailToReceiveAdWithError={this.bannerError}
+          onAdMobDispatchAppEvent={this.adMobEvent}
+        />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: Colors.priorityHighBackgroundColor,
+  modalContainer: {
+    // backgroundColor: Colors.priorityHighBackgroundColor,
     flex: 1,
     padding: 30,
   },
+  adsContainer: {
+    backgroundColor: Colors.secondary,
+    height: 60,
+  },
   rowWrapper: {
     justifyContent: "center",
-    alignItems:'center'
+    alignItems: "center",
   },
-  descriptionRowWrapper:{
-    justifyContent:'center',
-    alignItems:"flex-start"
+  descriptionRowWrapper: {
+    justifyContent: "center",
+    alignItems: "flex-start",
   },
   textWrapper: {
     textAlign: "center",
@@ -58,14 +130,14 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    flexWrap:'nowrap',
+    flexWrap: "nowrap",
   },
   duration: {
     fontSize: 112,
   },
   descTitle: {
     fontSize: 20,
-    paddingBottom:3,
+    paddingBottom: 3,
     fontWeight: "bold",
   },
 });

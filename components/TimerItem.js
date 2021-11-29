@@ -14,14 +14,13 @@ export default function TimerItem({ item,navigation }) {
 
   return (
     <TouchableWithoutFeedback
-      //TODO 2 Set Up so on click modal opens and is passed refrence to item
       onPress={() => {
         navigation.navigate('InfoModal',item);
       }}
     >
       <View style={styles.container}>
         <Text style={styles.title}>{item.title}</Text>
-        <Text style={{...styles.duration,...styles.highlightText}}>{item.duration}</Text>
+        <Text style={{...styles.duration,...styles.highlightText}}>{item.getFormattedTime()}</Text>
       </View>
     </TouchableWithoutFeedback>
   );
