@@ -11,16 +11,47 @@ import {
   setTestDeviceIDAsync,
 } from "expo-ads-admob";
 
-const updateHeaderBackgroundColor = () => {};
+const updateHeaderBackgroundColor = (navigation, priority) => {
+  switch (priority) {
+    case PriorityEnum.p3:
+      navigation.setOptions({
+        headerStyle: {
+          backgroundColor: Colors.priorityLowBackgroundColor,
+          elevation: 0,
+          borderBottomWidth: 0,
+        },
+      });
+      break;
+    case PriorityEnum.p2:
+      navigation.setOptions({
+        headerStyle: {
+          backgroundColor: Colors.priorityMedBackgroundColor,
+          elevation: 0,
+          borderBottomWidth: 0,
+        },
+      });
+      break;
+    case PriorityEnum.p1:
+      navigation.setOptions({
+        headerStyle: {
+          backgroundColor: Colors.priorityHighBackgroundColor,
+          elevation: 0,
+          borderBottomWidth: 0,
+        },
+      });
+      break;
+  }
+};
 
 export default function ReminderInfoModal({ navigation, route, props }) {
   // TODO 1C Set background color based on priority
   // TODO 3C Change Header Color Based on priority
   // TODO 2C Set up Space For Ads to Display
   //TODO 4C Set up Test Ads
+
   const title = route.params.title;
   const description = route.params.description;
-  const duration = route.params.duration;
+  const duration = route.params.getFormattedTime();
   const uuid = route.params.uuid;
   const priority = route.params.priority;
 
@@ -33,33 +64,16 @@ export default function ReminderInfoModal({ navigation, route, props }) {
   const ChangeStyleOnPriority = () => {
     switch (priority) {
       case priorityEnum.p3:
-        navigation.setOptions({
-          headerStyle: {
-            backgroundColor: Colors.priorityLowBackgroundColor,
-            elevation: 0,
-            borderBottomWidth: 0,
-          },
-        });
+        updateHeaderBackgroundColor(navigation, priority);
         return { backgroundColor: Colors.priorityLowBackgroundColor };
         break;
       case priorityEnum.p2:
-        navigation.setOptions({
-          headerStyle: {
-            backgroundColor: Colors.priorityMedBackgroundColor,
-            elevation: 0,
-            borderBottomWidth: 0,
-          },
-        });
+        updateHeaderBackgroundColor(navigation, priority);
         return { backgroundColor: Colors.priorityMedBackgroundColor };
+        
         break;
       case priorityEnum.p1:
-        navigation.setOptions({
-          headerStyle: {
-            backgroundColor: Colors.priorityHighBackgroundColor,
-            elevation: 0,
-            borderBottomWidth: 0,
-          },
-        });
+        updateHeaderBackgroundColor(navigation, priority);
         return { backgroundColor: Colors.priorityHighBackgroundColor };
         break;
     }
