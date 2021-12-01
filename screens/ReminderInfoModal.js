@@ -44,10 +44,7 @@ const updateHeaderBackgroundColor = (navigation, priority) => {
 };
 
 export default function ReminderInfoModal({ navigation, route, props }) {
-  // TODO 1C Set background color based on priority
-  // TODO 3C Change Header Color Based on priority
-  // TODO 2C Set up Space For Ads to Display
-  //TODO 4C Set up Test Ads
+  
 
   const title = route.params.title;
   const description = route.params.description;

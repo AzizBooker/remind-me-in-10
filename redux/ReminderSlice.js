@@ -17,7 +17,6 @@ export const ReminderSlice=createSlice({
         AddReminder:(state,action)=>{
             state.reminders.push(action.payload)
         },
-        // TODO 1C Create FindReminderByUUID Function
         FindReminderByUUID:(state,action)=>{
              return state.reminders.find(reminder=>reminder.uuid==action.payload)
         }
