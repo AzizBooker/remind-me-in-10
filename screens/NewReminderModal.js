@@ -1,15 +1,18 @@
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+import { Button } from "react-native-paper";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { useState } from "react";
 import { TextInput,ToggleButton } from "react-native-paper";
 import ButtonGroup from "../components/Buttons/ButtonGroup";
 import Colors from "../utils/Colors";
 import SetTimeWidget from "../components/SetTimeWidget";
+
 export default function NewReminderModal() {
   //TODO 1 Finish UI of In Screen
   //TODO 2 On Submit new Remainder created (useFormik)
-  return (
+
+  return(
     <View style={styles.container}>
         <SetTimeWidget />
         <TextInput
@@ -29,13 +32,17 @@ export default function NewReminderModal() {
           underlineColor={Colors.secondary}
           mode="underline"
           style={[styles.input, styles.multilineInput]}
-          numberOfLines={7}
+          numberOfLines={5}
           theme={{
             colors: { text: Colors.primary, placeholder: Colors.primary2 },
           }}
         />
         <ButtonGroup containerStyle={styles.input}/>
-       
+        
+       <View style={styles.buttonContainer}>
+           <Button mode="text"  >Cancel</Button>
+           <Button mode="outlined" >Add Remainder </Button>
+       </View>
 
     </View>
   );
@@ -46,6 +53,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background,
     paddingBottom: 20,
+  },
+  buttonContainer:{
+      marginTop:20,
+      flexDirection:'row',
+      justifyContent:'space-around'
   },
   input: {
     color: Colors.secondary,
