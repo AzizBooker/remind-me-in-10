@@ -22,6 +22,7 @@
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
     "react-native-admob": "^2.0.0-beta.6",
+    "react-native-background-timer": "^2.4.1",
     "react-native-date-picker": "^4.1.2",
     "react-native-easy-grid": "^0.2.2",
     "react-native-gesture-handler": "^1.10.3",
@@ -34,7 +35,8 @@
     "react-native-web": "~0.13.12",
     "react-redux": "^7.2.5",
     "redux": "^4.1.1",
-    "uuid": "^3.4.0"
+    "uuid": "^3.4.0",
+    "expo-background-fetch": "~9.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"

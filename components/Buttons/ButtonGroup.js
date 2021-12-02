@@ -51,9 +51,6 @@ const styles = StyleSheet.create({
   text: {
     color: Colors.primary,
   },
-  borderRadius: 8,
-  paddingHorizontal: 20,
-  paddingVertical: 8,
   unselectedButton: {
     borderRadius: 8,
     paddingHorizontal: 24,

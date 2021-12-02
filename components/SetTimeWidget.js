@@ -7,15 +7,17 @@ import SetTimeModal from "./SetTimeModal";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from "moment";
 import { SpinPicker } from "react-native-spin-picker";
-export default function SetTimeWidget({mode}) {
+export default function SetTimeWidget({onChange}) {
+    const [duration,setDuration]=useState()
     const [date,setDate]=useState(new Date())
     const [show,setShow]=useState(false)
     const [text,setText]=useState(moment().format('LT'))
-
+  console.log(onChange())
     const handleDatePickerOnChange=(event,selectedDate)=>{
         console.log(event)
-        console.log(selectedDate)
         setText(formatDate(selectedDate))
+        onChange(GetTimeUntilDateInSeconds( selectedDate))
+
         setShow(false)
 
     }
@@ -23,6 +25,12 @@ export default function SetTimeWidget({mode}) {
     //function will turn a normal date into a moment formated 'LT' date consiting of hour,minute,and am or pm ;purpose
     const formatDate=(date)=>{
       return moment(date).format('LT')
+    }
+    const GetTimeUntilDateInMinutes=(date)=>{
+        console.log(moment(date).diff(new Date(),'minutes'))
+    }
+    const GetTimeUntilDateInSeconds=(date)=>{
+        console.log(moment(date).diff(new Date(),'seconds'))
     }
   return (
     <View style={styles.container}>

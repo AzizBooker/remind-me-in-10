@@ -1,5 +1,7 @@
 import priorityEnum from "../Enums/priority.enum"
 import { v4 as uuidGen } from "uuid"
+import * as BackgroundFetch from 'expo-background-fetch';
+
 //TODO 3 Implement Countdown Function
 //TODO 4 Function Called on Countdown End
 //TODO 6 Push Noticaction Shown on Countdown End
@@ -12,8 +14,24 @@ export default class Reminder{
     this.description=description
     this.duration=duration
     this.priority=priority
-
+    this.countdownIntervalID
+    this.init()
     }
+
+    init(){
+        this.startCountdown()
+    }
+
+    
+    startCountdown(){
+      this.countdownIntervalID=setInterval(()=>{
+          this.DecrementDuration()
+      },100)
+    }
+    DecrementDuration(){
+        this.duration=this.duration-1
+    }
+
     getUUID(){
         return this.uuid
     }
@@ -46,10 +64,7 @@ export default class Reminder{
         console.log(this.getFormattedTime())
         return this.duration
     }
-    DecrementDuration(){
-        this.duration=this.duration--
-    }
-
+    
     getFormattedTime(){
         var min=0
         var sec=0
