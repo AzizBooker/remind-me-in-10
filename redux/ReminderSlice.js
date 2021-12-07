@@ -1,12 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import priorityEnum from "../Enums/priority.enum";
-import Reminder from "../Models/reminder.model";
+
 
 const initialState={
-    reminders:[
-        new Reminder({title:'Clean Bathroom',duration:600}),
-        
-    ]
+    reminders:[   
+       ]
        
 }
 
@@ -24,6 +22,7 @@ export const ReminderSlice=createSlice({
 })
 
 export const {AddReminder,FindReminderByUUID}=ReminderSlice.actions
+
 
 export default ReminderSlice.reducer;
 

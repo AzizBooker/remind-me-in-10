@@ -1,37 +1,59 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { View, Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { TextInput } from "react-native-paper";
 import Colors from "../utils/Colors";
 import SetTimeModal from "./SetTimeModal";
 import DateTimePicker from '@react-native-community/datetimepicker';
+
 import moment from "moment";
 import { SpinPicker } from "react-native-spin-picker";
-export default function SetTimeWidget({onChange}) {
+export default function SetTimeWidget({setDate}) {
     const [duration,setDuration]=useState()
-    const [date,setDate]=useState(new Date())
+   // const [date,setDate]=useState(new Date())
     const [show,setShow]=useState(false)
     const [text,setText]=useState(moment().format('LT'))
-  console.log(onChange())
+    const [timeUntil,setTimeUntil]=useState('0 minutes , 0 seconds')
+
+
+    
+
     const handleDatePickerOnChange=(event,selectedDate)=>{
-        console.log(event)
-        setText(formatDate(selectedDate))
-        onChange(GetTimeUntilDateInSeconds( selectedDate))
-
-        setShow(false)
-
+     //   console.log(event)
+      //  console.log(selectedDate)
+    //   console.log( getTimeUntilDateInSeconds(selectedDate) )
+       setText(formatDate(selectedDate))
+       
+       setTimeout(()=>{ //set time out fixes modal showing twice why? i don't know
+         setShow(false)
+         setDate(selectedDate)
+          setTimeUntil(getFormattedTime(getTimeUntilDateInSeconds(selectedDate)))
+         setTimeUntil(getFormattedTime(getTimeUntilDateInSeconds(selectedDate)))
+        
+},0)
+       
     }
-    //Date=>Date ;stub
-    //function will turn a normal date into a moment formated 'LT' date consiting of hour,minute,and am or pm ;purpose
+    //?Date=>Date ;stub
+    //?function will turn a normal date into a moment formated 'LT' date consiting of hour,minute,and am or pm ;purpose
     const formatDate=(date)=>{
       return moment(date).format('LT')
     }
-    const GetTimeUntilDateInMinutes=(date)=>{
-        console.log(moment(date).diff(new Date(),'minutes'))
+    const getTimeUntilDateInMinutes=(date)=>{
+        return (moment(date).diff(new Date(),'minutes'))
     }
-    const GetTimeUntilDateInSeconds=(date)=>{
-        console.log(moment(date).diff(new Date(),'seconds'))
+    const getTimeUntilDateInSeconds=(date)=>{
+        return (moment(date).diff(new Date(),'seconds'))
     }
+    const getFormattedTime=(duration)=>{
+      var min=Math.floor(duration/60)
+      var sec=duration-(min * 60)
+      
+           
+     return( `${min} minutes , ${sec} seconds`)
+        
+    }
+
+
   return (
     <View style={styles.container}>
       <TouchableWithoutFeedback
@@ -40,10 +62,14 @@ export default function SetTimeWidget({onChange}) {
           setShow(true)
         }}
       >
+        <View>
         <Text style={styles.text}>{text}</Text>
+        <Text style={styles.subtitleText}>in {timeUntil}</Text>
+        </View>
       </TouchableWithoutFeedback>
+
       {show&& (
-          <DateTimePicker value={date} mode="time" minimumDate={new Date()}   onChange={handleDatePickerOnChange}/>
+          <DateTimePicker value={new Date()} mode="time"  disabled={true}  onChange={handleDatePickerOnChange}/>
       )
           } 
      
@@ -65,11 +91,9 @@ const styles = StyleSheet.create({
     alignSelf:"center",
     textAlign:"center"
   },
+  subtitleText:{
+    color:Colors.primary2,
+    alignSelf:'center',
+    textAlign:"center"
+  }
 });
-/*
- <SpinPicker
-                data={[...Array(100).keys()]}
-                value={this.state.selectedItem}
-                keyExtractor={number => number.toString()}
-                renderItem={item => <Text>{item.toString()}</Text>}/>
-                */

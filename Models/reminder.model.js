@@ -1,21 +1,27 @@
 import priorityEnum from "../Enums/priority.enum"
 import { v4 as uuidGen } from "uuid"
+import { useDispatch,useSelector } from "react-redux";
+import { FindReminderByUUID } from "../redux/ReminderSlice";
 import * as BackgroundFetch from 'expo-background-fetch';
 
 //TODO 3 Implement Countdown Function
 //TODO 4 Function Called on Countdown End
-//TODO 6 Push Noticaction Shown on Countdown End
+//TODO 5 Push Noticaction Shown on Countdown End
+
+
+
 
 export default class Reminder{
 
     
-    constructor({title,description="",duration,isPaused=false,uuid=uuidGen(),priority=priorityEnum.p3}){
-    this.uuid=uuid
+    constructor({title="new reminder",description="",duration=600,priority=priorityEnum.p3}){
+
     this.title=title
     this.description=description
     this.duration=duration
     this.priority=priority
-    this.countdownIntervalID
+    this.isPaused=false
+    this.uuid=uuidGen()
     this.init()
     }
 
@@ -25,9 +31,11 @@ export default class Reminder{
 
     
     startCountdown(){
+    console.log(useDispatch(FindReminderByUUID(this.uuid)))
       this.countdownIntervalID=setInterval(()=>{
+          console.log(this.duration)
           this.DecrementDuration()
-      },100)
+      },1000)
     }
     DecrementDuration(){
         this.duration=this.duration-1

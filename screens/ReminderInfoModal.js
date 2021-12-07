@@ -11,7 +11,11 @@ import {
   setTestDeviceIDAsync,
 } from "expo-ads-admob";
 
-const updateHeaderBackgroundColor = (navigation, priority) => {
+//TODO App Almost Finshed: Replace Test Id With Own Admob Id
+
+export default function ReminderInfoModal({ navigation, route, props }) {
+  
+  const updateHeaderBackgroundColor = (navigation, priority) => {
   switch (priority) {
     case PriorityEnum.p3:
       navigation.setOptions({
@@ -43,9 +47,6 @@ const updateHeaderBackgroundColor = (navigation, priority) => {
   }
 };
 
-export default function ReminderInfoModal({ navigation, route, props }) {
-  
-
   const title = route.params.title;
   const description = route.params.description;
   const duration = route.params.getFormattedTime();
@@ -59,9 +60,10 @@ export default function ReminderInfoModal({ navigation, route, props }) {
   //Priority=>Style ;stub
   //Depending on the Priority passed a different styles will be passed ;purpose
   const ChangeStyleOnPriority = () => {
+    var navigationOptions={}
     switch (priority) {
       case priorityEnum.p3:
-        updateHeaderBackgroundColor(navigation, priority);
+       updateHeaderBackgroundColor(navigation, priority);
         return { backgroundColor: Colors.priorityLowBackgroundColor };
         break;
       case priorityEnum.p2:
