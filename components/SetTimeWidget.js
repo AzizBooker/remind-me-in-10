@@ -26,7 +26,7 @@ export default function SetTimeWidget({setDate}) {
        
        setTimeout(()=>{ //set time out fixes modal showing twice why? i don't know
          setShow(false)
-         setDate(selectedDate)
+         setDate(getTimeUntilDateInSeconds(selectedDate))
           setTimeUntil(getFormattedTime(getTimeUntilDateInSeconds(selectedDate)))
          setTimeUntil(getFormattedTime(getTimeUntilDateInSeconds(selectedDate)))
         

@@ -6,15 +6,22 @@ import { FAB } from "react-native-paper";
 import priorityEnum from "../Enums/priority.enum";
 import TimerItem from "../components/TimerItem";
 import Reminder from "../Models/reminder.model";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch,connect } from "react-redux;
 import { FindReminderByUUID, AddReminder } from "../redux/ReminderSlice";
 
 //TODO 7 Set Up Push Notifcation
 
-export default function HomeScreen({ navigation }) {
+export default function HomeScreen({ navigation,route }) {
   const DATA = useSelector((state) => state.ReminderSlice.reminders);
+  
+  const dispatch=useDispatch()
 
-
+    if(route.params!=undefined){
+      console.log(route.params)
+ /* dispatch(  AddReminder(  new Reminder({title:route.params.title,description:route.params.description,
+        duration:route.params.duration,priority:route.params.priority})) ) */
+    }
+ 
 
   const renderItem = ({ item }) => (
     <TimerItem item={item} navigation={navigation} />

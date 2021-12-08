@@ -2,17 +2,27 @@ import React  from "react";
 import { View, Text, StyleSheet,TouchableHighlight } from "react-native";
 import { Button } from "react-native-paper";
 import { Col, Row, Grid } from "react-native-easy-grid";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { TextInput, ToggleButton } from "react-native-paper";
 import Colors from "../utils/Colors";
 import { Formik } from "formik";
 import SetTimeWidget from "../components/SetTimeWidget";
+import Reminder from "../Models/reminder.model";
 import priorityEnum from "../Enums/priority.enum";
+import { AddReminder } from "../redux/ReminderSlice";
 
-export default function NewReminderModal() {
-  //TODO 1 Add Spinners for Timer
+
+
+
+export default function NewReminderModal({navigation}) {
+  //TODO 1N/A Add Spinners for Timer
   //TODO 2 On Submit new Remainder created (useFormik)
+
+ 
+ const [sumbitted,setSumbited]=useState(false)
+
  const [date, setDate] = useState(new Date())
+ 
   //! For Button Group
   const data = ["None", "Medium", "High"];
   const [userOption, setUserOption] = useState("None");
@@ -20,16 +30,40 @@ export default function NewReminderModal() {
     setUserOption(item);
   };
   
+ 
+ 
+  
+ 
+      
+    
+
 
   return (
     <View style={styles.container}>
       <Formik
         initialValues={{
-          duration: "",
           title: "",
           description: "",
         }}
-        onSubmit={(values) => console.log(values,userOption,date)}
+        onSubmit={(values) =>{ 
+          var priority
+          switch(userOption){
+            case('None'):
+            priority=priorityEnum.p3
+            break;
+            case("Medium"):
+            priority=priorityEnum.p2
+            break;
+            case ("High"):
+            priority=priorityEnum.p1
+            break;
+          } 
+          
+          navigation.navigate('Home',
+           {title:values.title,description:values.description,priority:priority,duration:date})
+
+        
+        } }
       >
         {({ handleChange, handleBlur, handleSubmit, values }) => (
           <View>
